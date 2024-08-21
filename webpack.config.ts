@@ -1,40 +1,21 @@
 import path from 'path'
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { buildWebpackConfig } from './config/buildWebpack/buildWebpackConfig';
+import { BuildPaths } from './config/buildWebpack/types/config';
 
-const config: webpack.Configuration = {
-    mode: 'development',
+const paths: BuildPaths = {
+    output: path.resolve(__dirname, 'build'),
     entry: path.resolve(__dirname, 'src', 'index.ts'),
-    //тут настраиваем лоадеры для сторонних файлов ts/css/png ...
-    module: {
+    html: path.resolve(__dirname, 'public', 'index.html')
+}
 
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/ //исключаем файлы
-            }
-        ]
-    },
-    //в резолв мы указываем расширения тех файлов,
-    // при импорте которых мы не будем указывать расширение
-    //import Component from './components/Component'
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js']
-    },
-    output: {
-        filename: '[name].[contenthash].js', //для кеширования файла
-        // filename: 'bandle.js',
-        path: path.resolve(__dirname, 'build'),
-        clean: true // чистим выходные файлы
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            //настраиваем шаблон для выходного файла html, чтобы в него встраивались скрипты
-            template: path.resolve(__dirname, 'public', 'index.html')
-        }),
-        new webpack.ProgressPlugin()
-    ]
-};
+const mode = 'development';
+const isDev = mode === 'development';
+
+const config: webpack.Configuration = buildWebpackConfig({
+    mode,
+    paths: paths,
+    isDev
+})
 
 export default config;

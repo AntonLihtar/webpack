@@ -12,6 +12,8 @@
     "jsx": "react",
     //позволяет компилятору обрабатывать не только ts файлы, но и js
     "allowJs": true,
+    //для абсолютного импорта
+    "baseUrl": ".",
     "moduleResolution": "node",
     //esModuleInterop позволяет работать с пакетами, которые используют
     //import (require(), module.export) = common js как c обычными пакетами используя import/export
