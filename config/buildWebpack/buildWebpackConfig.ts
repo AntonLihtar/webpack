@@ -3,10 +3,11 @@ import webpack from 'webpack';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';
+import { buildDevServer } from './buildDevServer';
 
 export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
-    const { html, output, entry } = options.paths
-    const { mode } = options
+    const { html, output, entry } = options.paths;
+    const { mode, isDev } = options;
     return {
         mode,
         entry: entry,
@@ -24,7 +25,8 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
             // filename: 'bandle.js',
             path: output,
             clean: true // чистим выходные файлы
-        }
-
+        },
+        devtool: isDev ? 'inline-source-map' : undefined,
+        devServer: isDev ? buildDevServer(options) : undefined,
     };
 }
