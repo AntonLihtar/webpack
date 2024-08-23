@@ -8,9 +8,9 @@ import { BuildEnv, BuildPaths } from './config/buildWebpack/types/config';
 export default (env: BuildEnv) => {
 
     const paths: BuildPaths = {
-        output: path.resolve(__dirname, 'build'),
-        entry: path.resolve(__dirname, 'src', 'index.ts'),
-        html: path.resolve(__dirname, 'public', 'index.html')
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        html: path.resolve(__dirname, 'public', 'index.html'),
+        output: path.resolve(__dirname, 'build')
     }
 
     const mode = env.mode || 'development';
