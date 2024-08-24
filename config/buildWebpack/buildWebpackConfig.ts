@@ -14,7 +14,7 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
         plugins: buildPlugins(html),
         //тут настраиваем лоадеры для сторонних файлов ts/css/png ...
         module: {
-            rules: buildLoaders()
+            rules: buildLoaders(options)
         },
         //в резолв мы указываем расширения тех файлов,
         // при импорте которых мы не будем указывать расширение

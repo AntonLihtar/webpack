@@ -1,5 +1,5 @@
-import { useState } from "react";
-import './Counter.scss'
+import { useState } from 'react';
+import cls from './Counter.module.scss'
 
 export const Counter = () => {
     const [c, setC] = useState(0)
@@ -9,7 +9,9 @@ export const Counter = () => {
     }
 
     return (
-        <div className="counter">
+        <div
+            className={cls.count}
+        >
             <div>
                 Counter {c}
             </div>

@@ -19,7 +19,7 @@
     //import (require(), module.export) = common js как c обычными пакетами используя import/export
     "esModuleInterop": true,
     //если в библиотеке нет default import, то позволяет использовать его без использования "* as"
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
   },
   //ts node не поддерживает ничего кроме, без них падает ошибка
   "ts-node": {
