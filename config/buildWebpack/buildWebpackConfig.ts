@@ -1,5 +1,6 @@
 import { BuildOptions } from './types/config';
-import webpack from 'webpack';
+import * as webpack from 'webpack';
+import * as webpackDevServer from 'webpack-dev-server';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';
