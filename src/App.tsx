@@ -1,21 +1,15 @@
-import {Counter} from './components/Counter';
 import {Link, Route, Routes} from 'react-router-dom';
 import {HomePageAsync} from './pages/HomePage/HomePage.async';
 import {AboutPageAsync} from './pages/AboutPage/AboutPage.async';
-import {Suspense, useState} from 'react';
+import {Suspense, useContext, useState} from 'react';
 import './styles/index.scss'
+import {useTheme} from "./theme/useTheme";
 
-export enum Theme {
-    NORMAL = 'normal',
-    DARK = 'dark',
-}
+
 
 const App = () => {
-    const [theme, setTheme] = useState<Theme>(Theme.NORMAL)
 
-    const toggleTheme = () => {
-        setTheme(theme === Theme.NORMAL ? Theme.DARK : Theme.NORMAL);
-    }
+    const {theme, toggleTheme} = useTheme();
 
     return (
         <div className={`app ${theme}`}>
